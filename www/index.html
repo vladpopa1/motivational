@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memories</title>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+        width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" language="JavaScript">
+
+
+function knowGoal()
+{
+
+    var dream = document.getElementById("dreamID").value;
+    if (dream != null)
+    {
+       if (dream == "" || !dream.replace(/\s/g, '').length)
+        {
+            alert("You must have a dream!");
+        }
+        else
+        {
+       
+            window.localStorage.setItem("dream", JSON.stringify(dream.trim()));
+        	window.location.href = "calendar.html";
+        }
+    }
+}
+
+        </script>
+
+        <style>
+			img { 
+    			width:100%; 
+				}
+		</style>
+    </head>
+    <body>
+ 
+ 		<img src="img/bigdream.jpg" alt="Dream big!" >
+ <br/>
+ <br/>
+ <br/>
+	
+	<h2 style="text-align: center;">
+		<em><kbd>What is your biggest dream?</kbd></em>
+	</h2>
+
+	<h4 style="text-align: center;">
+		<kbd>Setting the goal is the first step that takes you closer to achieving it. What goal do you have?</kbd>
+		<br><br><br>
+	</h4>
+
+
+	<div class="temp123">
+	<input type="text" name="dreamName" id="dreamID"><br><br>
+	<input type="button" class="submitDream" value="I know my goal!" onclick="knowGoal()">
+	</div>
+
+    </body>
+</html>

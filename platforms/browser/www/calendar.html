@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pagina noua</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" language="JavaScript">
+ 
+      var pickedDate
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; 
+      var yyyy = today.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      }
+      if(mm<10){
+        mm='0'+mm
+      }
+      today = yyyy+'-'+mm+'-'+dd;
+
+    function setMaxForDob() {
+      document.getElementById("datefield").setAttribute("min", today);
+    }
+
+ /*   function setDate(){
+      pickedDate = new Date();
+      pickedDate = document.getElementById("datefield").value;
+    } */
+
+    function knowDate()
+      {
+      pickedDate = new Date();
+      pickedDate = document.getElementById("datefield").value;
+      if(pickedDate == null) alert("No date picked");
+      if(today >= pickedDate) alert("Date must be in future");
+      if(today < pickedDate )  { 
+            var calendar = {};
+
+            calendar["row" + 0] = pickedDate;
+  
+        window.localStorage.setItem("datePicked", JSON.stringify(pickedDate));
+        var isNew = "true";
+        window.localStorage.setItem("isNew", JSON.stringify(isNew));
+        window.location.href = "doYouBelieve.html";
+        }
+
+        }
+
+        </script>
+
+        <style>
+			img { 
+    			width:100%; 
+				}
+		</style>
+
+    </head>
+    <body onload="setMaxForDob()">
+ <img src="img/bigdream.jpg" alt="Dream big!" >
+ <br/>
+ <br/>
+ <br/>
+	
+	<h2 style="text-align: center;">
+		<em><kbd>When will you finish it?</kbd></em>
+	</h2>
+
+	<h4 style="text-align: center;">
+		<kbd>We know you will do it! The only question is HOW FAST? Until when do you want it done?</kbd>
+		<br><br><br>
+	</h4>
+
+	<div class="temp123">
+	<input id="datefield" type='date' onchange="setDate()"></input>
+	<br><br>
+	<input type="button" class="submitDate"  value="I know when!" onclick="knowDate()">
+	</div>
+ <br/>
+ <br/> <br/>
+ <br/> <br/>
+ <br/> <br/>
+ <br/> <br/>
+ <br/> <br/>
+    </body>
+</html>
