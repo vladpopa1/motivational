@@ -15,6 +15,14 @@
                         {
                             "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImagePicker\"><param name=\"ios-package\" value=\"SOSPicker\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -35,6 +43,12 @@
     },
     "installed_plugins": {
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.lunatix.memories"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.lunatix.memories"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.lunatix.memories"
         }
     },
@@ -71,9 +85,27 @@
             "clobbers": [
                 "CameraPopoverHandle"
             ]
+        },
+        {
+            "id": "cordova-plugin-image-picker.ImagePicker",
+            "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+            "pluginId": "cordova-plugin-image-picker",
+            "clobbers": [
+                "plugins.imagePicker"
+            ]
+        },
+        {
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-camera": "2.1.1"
+        "cordova-plugin-camera": "2.1.1",
+        "cordova-plugin-image-picker": "1.1.1",
+        "cordova-plugin-device": "1.1.2"
     }
 }

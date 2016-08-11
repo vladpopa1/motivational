@@ -2,25 +2,73 @@
 <html>
     <head>
         <title>Profile</title>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+        width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" language="JavaScript">
 
+                    function load(){
+                        var nume = window.localStorage.getItem("userName");
+                        var email = window.localStorage.getItem("userEmail");
+                        if(nume != null && nume != "") document.getElementById("name").innerHTML = nume;
+                        else document.getElementById("name").innerHTML = "nume si prenume";
+                        if(email != null && nume != "") document.getElementById("email").innerHTML = email;
+                        else document.getElementById("email").innerHTML = "email";
+                    }
 
-
+                    function editName(){
+                        var nume = prompt("Numele si prenumele tau","");
+                        if (nume != null)
+                    {
+                        if (nume == "" || !nume.replace(/\s/g, '').length)
+                        {
+                            alert("Name field empty");
+                        }
+                        else
+                        {
+                            document.getElementById("name").innerHTML = nume.trim();
+                            window.localStorage.setItem("userName", JSON.stringify(nume.trim()));
+                            nume = window.localStorage.getItem("userName");
+                            alert(nume);
+                        }
+                    }
+                                        }
+                     function editMail(){
+                        var mail = prompt("Adresa ta de email","");
+                        if (mail != null)
+                    {
+                        if (mail == "" || !mail.replace(/\s/g, '').length)
+                        {
+                            alert("Email field empty");
+                        }
+                        else
+                        {
+                            document.getElementById("email").innerHTML = mail.trim();
+                            window.localStorage.setItem("userEmail", JSON.stringify(nume.trim()));
+                        }
+                    }
+                                        }
 
         </script>
 
        
     </head>
-    <body>
+    <body onload="load()">
         <div class="temp123">
             <img src="img/bigdream.jpg" alt="Dream big!" ><br>
 
         <div/>
-            <p id="name"></p>
-            <p id="email"></p>
-            <script> document.getElementById("name").innerHTML = "nume si prenume";
-                     document.getElementById("email").innerHTML = "email";
+            <p id="name">Nume si prenume</p>
+            <p id="email">Email</p>
+            <div class="tempLeft">
+            <button type="button" value="edit name" class="editName" onclick="editName()">Edit name</button> <br>
+            <button type="button" value="edit email" class="editMail" onclick="editMail()">Edit mail</button> <br>
+            </div>
+            <script>// document.getElementById("name").innerHTML = "nume si prenume";
+                    // document.getElementById("email").innerHTML = "email";
+
             </script>
     </body>
 </html>

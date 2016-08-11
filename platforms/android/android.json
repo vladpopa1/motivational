@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImagePicker\"><param name=\"android-package\" value=\"com.synconset.ImagePicker\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -27,7 +31,18 @@
                             "count": 1
                         }
                     ],
-                    "/manifest": []
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:label=\"@string/multi_app_name\" android:name=\"com.synconset.MultiImageChooserActivity\" android:theme=\"@android:style/Theme.Holo.Light\"></activity>",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -37,6 +52,9 @@
             "PACKAGE_NAME": "com.lunatix.memories"
         },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.lunatix.memories"
+        },
+        "cordova-plugin-image-picker": {
             "PACKAGE_NAME": "com.lunatix.memories"
         }
     },
@@ -76,10 +94,18 @@
             "clobbers": [
                 "device"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+            "id": "cordova-plugin-image-picker.ImagePicker",
+            "clobbers": [
+                "plugins.imagePicker"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-camera": "2.1.1",
-        "cordova-plugin-device": "1.1.2"
+        "cordova-plugin-device": "1.1.2",
+        "cordova-plugin-image-picker": "1.1.1"
     }
 }

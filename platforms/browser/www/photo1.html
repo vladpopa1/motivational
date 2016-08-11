@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>Capture Photo</title>
-
-    <script type="text/javascript" charset="utf-8" src="config.xml"></script>
-    <script type="text/javascript" charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+        width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" language="JavaScript">
 
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
@@ -63,7 +66,14 @@
     // A button will call this function
     //
 function capturePhoto(){
-    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
+    navigator.camera.getPicture(uploadPhoto,null,{
+            quality: 50,
+            targetWidth: 512,
+            targetHeight: 512,
+            destinationType: navigator.camera.DestinationType. DATA_URL,
+            saveToPhotoAlbum: true,
+            correctOrientation: true
+        });
 }
 function uploadPhoto(data){
 // this is where you would send the image file to server
@@ -78,8 +88,7 @@ function uploadPhoto(data){
   );
 
   // upload has failed Fail
-
-  /* 
+ 
 
   if (failedToUpload){
 
@@ -91,8 +100,6 @@ function uploadPhoto(data){
     );
 
   } 
-  */
-
 
 }
 
@@ -102,18 +109,20 @@ function okay(){
 
     // A button will call this function
     //
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true }); 
-    }
 
     // A button will call this function
     //
     function getPhoto(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, {
+            quality: 50,
+            targetWidth: 512,
+            targetHeight: 512,
+            sourceType: source,
+            destinationType: destinationType.FILE_URI,
+            saveToPhotoAlbum: true,
+            correctOrientation: true
+        });
     }
 
     // Called if something bad happens.
@@ -123,9 +132,21 @@ function okay(){
     }
 
     function nextPage(){
+      var isNew = "true";
+      window.localStorage.setItem("isNew", JSON.stringify(isNew));
       window.location.href = "dreamsPage.html";
     }
-
+    function morePictures(){
+      window.imagePicker.getPictures(
+    function(results) {
+        for (var i = 0; i < results.length; i++) {
+            console.log('Image URI: ' + results[i]);
+        }
+    }, function (error) {
+        console.log('Error: ' + error);
+    }
+);
+    }
     </script>
   </head>
   <body>
@@ -137,11 +158,10 @@ function okay(){
     </div>
     </div>
     <br><br>
-    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <button onclick="nextPage()">NEXT</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
+    <button onclick="morePicures">MULTE POZE</button><br>
+    <img style="width:auto;height:120px;" id="smallImage" src="" />
+    <img style="width:auto;height:120px;" id="largeImage" src="" />
   </body>
 </html>

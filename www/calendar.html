@@ -8,7 +8,7 @@
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" language="JavaScript">
-        
+
       var pickedDate
       var today = new Date();
       var dd = today.getDate();
@@ -33,22 +33,18 @@
 
     function knowDate()
       {
-      pickedDate = new Date();
       pickedDate = document.getElementById("datefield").value;
-      if(pickedDate == null) alert("No date picked");
+      if(pickedDate == "") alert("No date picked");
+      else {
       if(today >= pickedDate) alert("Date must be in future");
       if(today < pickedDate )  { 
-            var calendar = {};
-
-            calendar["row" + 0] = pickedDate;
-  
-        window.localStorage.setItem("datePicked", JSON.stringify(pickedDate));
-        var isNew = "true";
-        window.localStorage.setItem("isNew", JSON.stringify(isNew));
-        window.location.href = "doYouBelieve.html";
-        }
-
-        }
+                                var calendar = {};
+                                calendar["row" + 0] = pickedDate;
+                                window.localStorage.setItem("datePicked", JSON.stringify(pickedDate));
+                                window.location.href = "doYouBelieve.html";
+                                }
+            }
+      }
 
         </script>
 
@@ -75,7 +71,7 @@
 	</h4>
 
 	<div class="temp123">
-	<input id="datefield" type='date' onchange="setDate()"></input>
+	<input id="datefield" type='date' onchange="setDate()" value=""></input>
 	<br><br>
 	<input type="button" class="submitDate"  value="I know when!" onclick="knowDate()">
 	</div>

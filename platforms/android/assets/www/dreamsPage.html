@@ -2,8 +2,7 @@
 <html>
  <head>
         <title>My dreams</title>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
-        width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -269,30 +268,17 @@ function toProfile()
     window.location.href = "profile.html";
 }
 
-var string = device.platform;
-
-if(string == "android" || string == "ANDROID" || string == "Android" || 1==1)
-{
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
-    function onDeviceReady() {
-    document.addEventListener("backbutton", function (e) {
-        e.preventDefault(); 
-    navigator.notification.confirm("Are you sure want to exit from App?", onConfirmExit, "Confirmation", "Yes,No");
-    }, false );
-}
- 
-function onConfirmExit(button) {
-    if(button==2){ 
-        return;
-    }else{
-        navigator.app.exitApp();
-    }
-}
-}
+    document.addEventListener("backbutton", function(e){
+    navigator.app.exitApp();
+    }, false);
 
 function exit(){
-    navigator.app.exitApp();
+    var string = device.platform;
+  //  if( string.equals('Android') == true || string.equals('android') == true || string.equals('ANDROID') == true ){
+    if("android".equals("android") == 1){
+    alert(string);
+    }
+    else alert("PLM");
 }
 
         </script>

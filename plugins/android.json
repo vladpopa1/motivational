@@ -12,6 +12,9 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.lunatix.memories"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.lunatix.memories"
         }
     },
     "dependent_plugins": {}

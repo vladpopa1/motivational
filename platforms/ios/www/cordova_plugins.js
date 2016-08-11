@@ -33,6 +33,14 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-image-picker.ImagePicker",
+        "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+        "pluginId": "cordova-plugin-image-picker",
+        "clobbers": [
+            "plugins.imagePicker"
+        ]
+    },
+    {
         "id": "cordova-plugin-device.device",
         "file": "plugins/cordova-plugin-device/www/device.js",
         "pluginId": "cordova-plugin-device",
@@ -45,6 +53,7 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-camera": "2.1.1",
+    "cordova-plugin-image-picker": "1.1.1",
     "cordova-plugin-device": "1.1.2"
 };
 // BOTTOM OF METADATA
