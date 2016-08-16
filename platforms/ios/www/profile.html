@@ -12,9 +12,22 @@
                     function load(){
                         var nume = window.localStorage.getItem("userName");
                         var email = window.localStorage.getItem("userEmail");
-                        if(nume != null && nume != "") document.getElementById("name").innerHTML = nume;
+
+                        if(nume != null && nume != "") 
+                                {   
+                                var len_nume = nume.length;
+                                nume = nume.substring(1, len_nume-1);
+                                document.getElementById("name").innerHTML = nume;                                
+                                }
                         else document.getElementById("name").innerHTML = "nume si prenume";
-                        if(email != null && nume != "") document.getElementById("email").innerHTML = email;
+                        
+
+                        if(email != null && nume != "") 
+                            { 
+                            var len_email = email.length;
+                            email = email.substring(1, len_email-1);
+                            document.getElementById("email").innerHTML = email;
+                            }
                         else document.getElementById("email").innerHTML = "email";
                     }
 
@@ -66,9 +79,5 @@
             <button type="button" value="edit name" class="editName" onclick="editName()">Edit name</button> <br>
             <button type="button" value="edit email" class="editMail" onclick="editMail()">Edit mail</button> <br>
             </div>
-            <script>// document.getElementById("name").innerHTML = "nume si prenume";
-                    // document.getElementById("email").innerHTML = "email";
-
-            </script>
     </body>
 </html>

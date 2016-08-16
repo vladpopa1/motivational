@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+        width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" language="JavaScript">
+
+function facebook(){
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1571345796500711',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+
+    FB.getLoginStatus(function(responese) {
+      if (responese.status === 'connected'){
+          document.getElementById('status').value = "we are connected";
+      } else if (responese.status === 'not_authorized') {
+          document.getElementById('status').value = "we are not logged in"
+      } else document.getElementById('status').value = "NUSH"
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+}
+</script>
+
+       
+    </head>
+    <body onload="facebook()">
+
+
+<div>
+<input id="status" type="text" value=""></input>
+</div>
+    </body>
+</html>

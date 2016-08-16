@@ -47,6 +47,14 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "id": "phonegap-facebook-plugin.FacebookConnectPlugin",
+        "file": "plugins/phonegap-facebook-plugin/facebookConnectPlugin.js",
+        "pluginId": "phonegap-facebook-plugin",
+        "clobbers": [
+            "facebookConnectPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -54,7 +62,8 @@ module.exports.metadata =
 {
     "cordova-plugin-camera": "2.1.1",
     "cordova-plugin-image-picker": "1.1.1",
-    "cordova-plugin-device": "1.1.2"
+    "cordova-plugin-device": "1.1.2",
+    "phonegap-facebook-plugin": "0.12.0"
 };
 // BOTTOM OF METADATA
 });

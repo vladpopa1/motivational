@@ -38,10 +38,44 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>m.facebook.com</key>
+        <dict/>
+        <key>graph.facebook.com</key>
+        <dict/>
+        <key>api.facebook.com</key>
+        <dict/>
+        <key>fbcdn.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>akamaihd.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+      </dict>
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
     <key>CFBundleLocalizations</key>
     <array/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array/>
+    <key>FacebookAppID</key>
+    <string>1571345796500711</string>
+    <key>FacebookDisplayName</key>
+    <string>Lunatix</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb1571345796500711</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

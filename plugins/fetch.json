@@ -184,5 +184,17 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "phonegap-facebook-plugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phonegap/phonegap-facebook-plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1571345796500711",
+            "APP_NAME": "Lunatix"
+        }
     }
 }

@@ -10,6 +10,14 @@
     <feature name="ImagePicker">
         <param name="android-package" value="com.synconset.ImagePicker" />
     </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
@@ -35,6 +43,10 @@
     <content src="dreamsPage.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.12.0">
+        <param name="APP_ID" value="Lunatix" />
+        <param name="APP_NAME" value="1571345796500711" />
+    </gap:plugin>
     <icon src="icon.png" />
     <allow-navigation href="*" />
     <allow-intent href="*" />

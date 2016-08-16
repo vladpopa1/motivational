@@ -15,6 +15,11 @@
         },
         "cordova-plugin-image-picker": {
             "PACKAGE_NAME": "com.lunatix.memories"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "1571345796500711",
+            "APP_NAME": "Lunatix",
+            "PACKAGE_NAME": "com.lunatix.memories"
         }
     },
     "dependent_plugins": {}

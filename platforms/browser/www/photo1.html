@@ -61,6 +61,9 @@
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
+
+      addTableRow(imageURI, false);
+
     }
 
     // A button will call this function
@@ -80,6 +83,8 @@ function uploadPhoto(data){
 
   cameraPic.src = "data:image/jpeg;base64," + data;
   // Successful upload to the server
+  var picture = "data:image/jpeg;base64," + data;
+  addTableRow(picture, false);
   navigator.notification.alert(
     'Your Photo has been uploaded',  // message
     okay,                           // callback
@@ -102,14 +107,6 @@ function uploadPhoto(data){
   } 
 
 }
-
-function okay(){
-  // Do something
-}
-
-    // A button will call this function
-    //
-
     // A button will call this function
     //
     function getPhoto(source) {
@@ -120,7 +117,7 @@ function okay(){
             targetHeight: 512,
             sourceType: source,
             destinationType: destinationType.FILE_URI,
-            saveToPhotoAlbum: true,
+        //    saveToPhotoAlbum: true,
             correctOrientation: true
         });
     }
@@ -135,7 +132,7 @@ function okay(){
       var isNew = "true";
       window.localStorage.setItem("isNew", JSON.stringify(isNew));
       window.location.href = "dreamsPage.html";
-    }
+    }/*
     function morePictures(){
       window.imagePicker.getPictures(
     function(results) {
@@ -146,10 +143,119 @@ function okay(){
         console.log('Error: ' + error);
     }
 );
+    }*/
+
+
+var rowID = 0;
+function addTableRow(data, appIsLoading)
+{
+    rowID +=1;
+    var table = document.getElementById("imageTable");
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+ 
+    var cell1 = row.insertCell(0);
+    var element1 = document.createElement("img");
+    element1.type = "smallImage";
+    element1.style="width:auto;height:120px;"
+    //element1.name = "image[]";
+    element1.src = data;
+    element1.id = "image" + rowID;
+  //  element1.value = data; ///////////////////////////////////////////////////
+  ///////  element1.setAttribute("onclick", "checkboxClicked()");
+    cell1.appendChild(element1);
+
+// create the delete button
+    var cell2 = row.insertCell(1);
+    var element2 = document.createElement("input");
+    element2.type = "button";
+    element2.value = "Delete";
+    element2.setAttribute("onclick", "deleteSelectedRow(this)");
+    cell2.appendChild(element2);
+
+    saveImageList();
+ 
+    if (!appIsLoading) alert("Photo Added Successfully.");
+}
+
+function deleteSelectedRow(deleteButton)
+{
+    var p = deleteButton.parentNode.parentNode;
+    p.parentNode.removeChild(p);
+    saveImageList();
+}
+
+function saveImageList()
+{
+    var imageArray = {};
+ 
+    var table = document.getElementById("imageTable");
+    var rowCount = table.rows.length;
+ 
+    if (rowCount != 0)
+    {
+        for(var i=0; i<rowCount; i++)
+        {
+            var row = table.rows[i];
+
+            var imagebox = row.cells[0].childNodes[0];
+            imageValue = imagebox.src;
+
+            imageArray["row" + i] = imageValue;
+        }
     }
+    else
+    {
+        imageArray = null;
+    }
+
+    localStorage.setItem("imageList", JSON.stringify(imageArray));
+}
+
+function loadImageList()
+{
+    var theList = JSON.parse(localStorage.getItem("imageList"));
+
+    if (null == theList || theList == "null")
+    {
+        deleteAllRows();
+    }
+    else
+    {
+        var count = 0;
+        for (var obj in theList)
+        {
+            count++;
+        }
+
+        deleteAllRows();
+
+        for(var i = 0; i < count; i++)
+        {
+            addTableRow(theList["row" + i], true);
+        }
+    }
+
+}
+
+function deleteAllRows()
+{
+    var table = document.getElementById("imageTable");
+    var rowCount = table.rows.length;
+ 
+    for(var i = 0; i < rowCount; i++)
+    {
+        table.deleteRow(i);
+        rowCount--;
+        i--;
+    }
+
+    saveImageList();
+}
+
     </script>
   </head>
-  <body>
+  <body onload="loadImageList()">
     <div id="camera">
     <button class="camera-control" onclick="capturePhoto();">Capture Photo</button>
  
@@ -160,8 +266,10 @@ function okay(){
     <br><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <button onclick="nextPage()">NEXT</button><br>
-    <button onclick="morePicures">MULTE POZE</button><br>
     <img style="width:auto;height:120px;" id="smallImage" src="" />
     <img style="width:auto;height:120px;" id="largeImage" src="" />
+    <table id="imageTable" width="100%" border="3">
+
+    </table>
   </body>
 </html>

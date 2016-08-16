@@ -272,13 +272,8 @@ function toProfile()
     navigator.app.exitApp();
     }, false);
 
-function exit(){
-    var string = device.platform;
-  //  if( string.equals('Android') == true || string.equals('android') == true || string.equals('ANDROID') == true ){
-    if("android".equals("android") == 1){
-    alert(string);
-    }
-    else alert("PLM");
+function facebook(){
+    window.location.href = "login.html";
 }
 
         </script>
@@ -289,7 +284,7 @@ function exit(){
 <br><br><br>
 <div class="tempLeft">
     <button type="button" value="Add dream" class="addToDo" onclick="createNewToDo()">Add dream</button> <br>
-    <button type="button" value="exit" class="exit" onclick="exit()">exit</button> <br>
+    <button type="button" value="Facebook" class="login" onclick="facebook()">Facebook</button> <br>
 </div>
     <button type="button" class="removeTasks" onclick="removeCompletedTasks()">Remove completed dreams</button>
     <br/><br/><br/><br/>
